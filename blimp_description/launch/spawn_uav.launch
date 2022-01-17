@@ -15,11 +15,16 @@
 	<arg name="enable_wind" default="false"/>
 	<arg name="enable_physics" default="true"/>
 	<arg name="enable_sensors" default="true"/>
+	<arg name="enable_camera" default="false"/>
 	<arg name="enable_logging" default="false" />
 	<arg name="enable_ground_truth" default="true" />
 	<arg name="enable_mavlink_interface" default="false"/>
 	<arg name="log_file" default="$(arg uav_name)"/>
 	<arg name="wait_to_record_bag" default="false"/>
+
+	<arg name="wind_direction_x" default="1"/>
+	<arg name="wind_direction_y" default="0"/>
+	<arg name="wind_speed_mean" default="1.5"/>
 
 	<!--********** param **********-->
 	<param name="robot_description" command="
@@ -27,7 +32,8 @@
 		enable_meshes:=$(arg enable_meshes)
 		enable_wind:=$(arg enable_wind)
 		enable_physics:=$(arg enable_physics)	
-		enable_sensors:=$(arg enable_sensors)	
+		enable_sensors:=$(arg enable_sensors)
+		enable_camera:=$(arg enable_camera)		
 		enable_logging:=$(arg enable_logging)
 		enable_ground_truth:=$(arg enable_ground_truth)
 		enable_mavlink_interface:=$(arg enable_mavlink_interface)
@@ -35,8 +41,12 @@
 		wait_to_record_bag:=$(arg wait_to_record_bag)
 		uav_name:=$(arg uav_name)
 		namespace:=$(arg namespace)
-    		is_input_joystick:=$(arg is_input_joystick)"
-		/>
+    	is_input_joystick:=$(arg is_input_joystick)
+
+		wind_direction_x:=$(arg wind_direction_x)
+		wind_direction_y:=$(arg wind_direction_y)
+		wind_speed_mean:=$(arg wind_speed_mean)
+		"/>
 	<param name="tf_prefix" type="string" value="$(arg tf_prefix)" />
 
   	<!--********** spawn robot **********-->

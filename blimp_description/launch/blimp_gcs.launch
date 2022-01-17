@@ -24,7 +24,7 @@
 
 	<arg name="X" default="0.0"/>
 	<arg name="Y" default="0.0"/>
-	<arg name="Z" default="1.0"/>
+	<arg name="Z" default="30.0"/>
 
 	<!--********** load env **********-->
  	<env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find rotors_gazebo)/models"/>

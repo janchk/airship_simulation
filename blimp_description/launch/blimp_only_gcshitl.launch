@@ -65,15 +65,14 @@
 
                 <node name="fake_gps_drift_node" pkg="fake_gps_drift" type="fake_gps_drift_node" output="screen" />
 	
-		<node name="gcs2ros" pkg="roshitl" type="gcs2ros.py" output="screen" />
-
+		<node name="gcs2ros" pkg="roshitl" type="gcs2ros.py" output="screen"/>
 		<node name="ros2gcs" pkg="roshitl" type="ros2gcs.py" output="screen">
                     <remap from="GCSIMU" to="tail/imu" />
                     <remap from="GCSPOS" to="tail/position" />
                     <remap from="GCSVEL" to="ground_speed" />
                     <remap from="GCSAIRSPEED" to="tail/indicatedAirspeed" />
 		</node>
-		<!--<node name="gcs2ros" pkg="roshitl" type="gcs2ros.py" output="screen" />-->
+
 	</group>	
 </launch>
 

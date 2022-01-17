@@ -31,17 +31,21 @@
 #include <gazebo/physics/physics.hh>
 
 #include <mav_msgs/default_topics.h>  // This comes from the mav_comm repo
-
+#include <geometry_msgs/Point.h>
 #include "common.h"
 
 #include "WindSpeed.pb.h"             // Wind speed message
 #include "WrenchStamped.pb.h"         // Wind force message
 
 namespace gazebo {
+typedef const boost::shared_ptr<const gz_mav_msgs::WindSpeed>
+      GzWindSpeedMsgPtr;
+
 // Default values
 static const std::string kDefaultFrameId = "world";
 static const std::string kDefaultLinkName = "base_link";
 static const std::string kDefaultWindSpeedPubTopic = "wind_speed";
+static const std::string kDefaultWindStateTopic = "wind_state";
 
 static constexpr double kDefaultWindSpeedMean = 0.0;
 static constexpr int kDefaultTurbulenceLevel = 0;
@@ -86,6 +90,12 @@ class GazeboWindPlugin : public ModelPlugin {
   /// \brief Called when the world is updated.
   /// \param[in] _info Update timing information.
   void OnUpdate(const common::UpdateInfo& /*_info*/);
+
+  /// \brief    update wind state.
+  /// \details  update wind state from subscriber
+  void WindStateCallback(GzWindSpeedMsgPtr& wind_state_msg);
+  std::string wind_state_sub_topic_;
+  gazebo::transport::SubscriberPtr wind_state_sub_;
 
  private:
 

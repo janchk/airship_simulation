@@ -34,6 +34,7 @@
 	</xacro:macro>
 
 	<!-- Macro to add aerodynamics -->
+	<xacro:property name="M_PI" value="3.1415926535897931" />
 	<xacro:macro name="liftdrag"
 		params="namespace link_name air_density area body_lift stall_angle *upward *forward *cp">
 		<gazebo>

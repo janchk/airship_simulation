@@ -9,6 +9,7 @@
 	<arg name="enable_wind" default="true"/>
 	<arg name="enable_physics" default="true"/>
 	<arg name="enable_sensors" default="true"/>
+	<arg name="enable_camera" default="false"/>	
 	<arg name="enable_logging" default="false" />
 	<arg name="enable_ground_truth" default="true" />
 	<arg name="enable_mavlink_interface" default="false"/>
@@ -26,6 +27,10 @@
 	<arg name="Y" default="0.0"/>
 	<arg name="Z" default="1.0"/>
 
+	<arg name="wind_direction_x" default="1"/>
+	<arg name="wind_direction_y" default="0"/>
+	<arg name="wind_speed_mean" default="1.5"/>
+
 	<!--********** load env **********-->
  	<env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find rotors_gazebo)/models"/>
   	<env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find rotors_gazebo)/models"/>
@@ -40,6 +45,7 @@
 			<arg name="enable_wind" value="$(arg enable_wind)"/>
 			<arg name="enable_physics" value="$(arg enable_physics)" />
 			<arg name="enable_sensors" value="$(arg enable_sensors)" />
+			<arg name="enable_camera" value="$(arg enable_camera)" />			
 			<arg name="enable_logging" value="$(arg enable_logging)" />
 			<arg name="enable_ground_truth" value="$(arg enable_ground_truth)" />
 			<arg name="enable_mavlink_interface" value="$(arg enable_mavlink_interface)" />
@@ -48,9 +54,13 @@
 			<arg name="uav_name" value="$(arg uav_name)" />
 			<arg name="namespace" value="$(arg uav_name)"/>
 			<arg name="is_input_joystick" value="$(arg is_input_joystick)" />
-	        	<arg name="x" default="$(arg X)"/>
-	        	<arg name="y" default="$(arg Y)"/>
-	        	<arg name="z" default="$(arg Z)"/>
+			<arg name="x" default="$(arg X)"/>
+	        <arg name="y" default="$(arg Y)"/>
+	        <arg name="z" default="$(arg Z)"/>
+
+			<arg name="wind_direction_x" default="$(arg wind_direction_x)"/>
+			<arg name="wind_direction_y" default="$(arg wind_direction_y)"/>
+			<arg name="wind_speed_mean" default="$(arg wind_speed_mean)"/>
 		</include>
 
 		<!--********** spawn publishers **********-->

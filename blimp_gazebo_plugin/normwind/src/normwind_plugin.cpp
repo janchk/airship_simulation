@@ -25,6 +25,7 @@
 #include <math.h>
 
 #include "ConnectGazeboToRosTopic.pb.h"
+#include "ConnectRosToGazeboTopic.pb.h"
 
 namespace gazebo {
 
@@ -77,8 +78,8 @@ void GazeboWindPlugin::Load(physics::ModelPtr _model, sdf::ElementPtr _sdf) {
                       wind_turbulence_level);
   getSdfParam<ignition::math::Vector3d>(_sdf, "windDirectionMean", wind_direction_mean_, wind_direction_mean_);
   //getSdfParam<double>(_sdf, "windDirectionVariance", wind_direction_variance_, wind_direction_variance_);
-
-  // Check if a custom static wind field should be used.
+  getSdfParam<std::string>(_sdf, "windStateSubTopic",wind_state_sub_topic_,kDefaultWindStateTopic);
+// Check if a custom static wind field should be used.
   getSdfParam<bool>(_sdf, "useCustomStaticWindField", use_custom_static_wind_field_,
                       use_custom_static_wind_field_);
   if (!use_custom_static_wind_field_) {
@@ -378,6 +379,18 @@ void GazeboWindPlugin::OnUpdate(const common::UpdateInfo& _info) {
   wind_speed_pub_->Publish(wind_speed_msg_);
 }
 
+
+void GazeboWindPlugin::WindStateCallback(
+    GzWindSpeedMsgPtr& wind_state_msg) {
+  if (kPrintOnMsgCallback) {
+    gzdbg << __FUNCTION__ << "() called." << std::endl;
+  }
+  wind_speed_mean_ = 1.0;
+  wind_direction_mean_.X() = wind_state_msg->velocity().x();
+  wind_direction_mean_.Y() = wind_state_msg->velocity().y();
+  wind_direction_mean_.Z() = wind_state_msg->velocity().z();
+}
+
 void GazeboWindPlugin::CreatePubsAndSubs() {
   // Create temporary "ConnectGazeboToRosTopic" publisher and message.
   gazebo::transport::PublisherPtr connect_gazebo_to_ros_topic_pub =
@@ -385,6 +398,31 @@ void GazeboWindPlugin::CreatePubsAndSubs() {
           "~/" + kConnectGazeboToRosSubtopic, 1);
 
   gz_std_msgs::ConnectGazeboToRosTopic connect_gazebo_to_ros_topic_msg;
+
+  // Create temporary "ConnectRosToGazeboTopic" publisher and message
+  gazebo::transport::PublisherPtr gz_connect_ros_to_gazebo_topic_pub =
+      node_handle_->Advertise<gz_std_msgs::ConnectRosToGazeboTopic>(
+          "~/" + kConnectRosToGazeboSubtopic, 1);
+  gz_std_msgs::ConnectRosToGazeboTopic connect_ros_to_gazebo_topic_msg;
+
+  // ============================================ //
+  // ==== WIND STATE MSG SETUP (ROS->GAZEBO) ==== //
+  // ============================================ //
+
+  // Wind state subscriber (Gazebo).
+  wind_state_sub_ =
+      node_handle_->Subscribe("~/" + namespace_ + "/" + wind_state_sub_topic_,
+                              &GazeboWindPlugin::WindStateCallback, this
+                              );
+
+  connect_ros_to_gazebo_topic_msg.set_ros_topic(namespace_ + "/" +
+                                                wind_state_sub_topic_);
+  connect_ros_to_gazebo_topic_msg.set_gazebo_topic("~/" + namespace_ + "/" +
+                                                   wind_state_sub_topic_);
+  connect_ros_to_gazebo_topic_msg.set_msgtype(
+      gz_std_msgs::ConnectRosToGazeboTopic::WIND_SPEED);
+  gz_connect_ros_to_gazebo_topic_pub->Publish(connect_ros_to_gazebo_topic_msg,
+                                              true);
 
   // ============================================ //
   // ========= WRENCH STAMPED MSG SETUP ========= //

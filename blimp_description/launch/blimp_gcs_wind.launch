@@ -24,7 +24,7 @@
 
 	<arg name="X" default="0.0"/>
 	<arg name="Y" default="0.0"/>
-	<arg name="Z" default="1.0"/>
+	<arg name="Z" default="30.0"/>
 
 	<include file="$(find blimp_description)/launch/blimp_gcs.launch">
 		<arg name="uav_name" value="$( arg uav_name )"/>
@@ -53,5 +53,3 @@
 		<arg name="Z" value="$( arg Z )"/>
 	</include>
 </launch>
-
-
