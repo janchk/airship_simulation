@@ -55,7 +55,7 @@ $ sudo apt install build-essential
 $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/src
 $ catkin_init_workspace  # initialize your catkin workspace
-$ git clone --recurse-submodules https://github.com/robot-perception-group/airship_simulation.git -b noetic
+$ git clone --recurse-submodules https://github.com/Ootang2019/airship_simulation.git -b abcdrl
 ```
 
 3. Build your workspace with `python_catkin_tools` 
