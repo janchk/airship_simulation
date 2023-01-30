@@ -79,6 +79,9 @@ $ source ~/.bashrc
 ```console
 $ cd src/airship_simulation/LibrePilot
 $ # install qt sdk for building of GCS
+
+$ apt install qt5-default qtcreator 
+
 $ make qt_sdk_install
 $ # install arm sdk for building of flightcontroller firmware
 $ make arm_sdk_install

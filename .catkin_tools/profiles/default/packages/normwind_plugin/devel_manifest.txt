@@ -1,0 +1,2 @@
+blimp_gazebo_plugin/normwind
+/workspaces/airship_simulation/devel/.private/normwind_plugin/cmake.lock /workspaces/airship_simulation/devel/./cmake.lock

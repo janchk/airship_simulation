@@ -1,0 +1,2 @@
+blimp_gazebo_plugin/finliftdrag
+/workspaces/airship_simulation/devel/.private/finliftdrag_plugin/cmake.lock /workspaces/airship_simulation/devel/./cmake.lock

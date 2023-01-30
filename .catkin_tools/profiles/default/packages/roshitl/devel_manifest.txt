@@ -1,0 +1,5 @@
+LibrePilot/ROS/roshitl
+/workspaces/airship_simulation/devel/.private/roshitl/cmake.lock /workspaces/airship_simulation/devel/./cmake.lock
+/workspaces/airship_simulation/devel/.private/roshitl/lib/pkgconfig/roshitl.pc /workspaces/airship_simulation/devel/lib/pkgconfig/roshitl.pc
+/workspaces/airship_simulation/devel/.private/roshitl/share/roshitl/cmake/roshitlConfig-version.cmake /workspaces/airship_simulation/devel/share/roshitl/cmake/roshitlConfig-version.cmake
+/workspaces/airship_simulation/devel/.private/roshitl/share/roshitl/cmake/roshitlConfig.cmake /workspaces/airship_simulation/devel/share/roshitl/cmake/roshitlConfig.cmake

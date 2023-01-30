@@ -1,0 +1,8 @@
+rotors_simulator/rqt_rotors
+/workspaces/airship_simulation/devel/.private/rqt_rotors/cmake.lock /workspaces/airship_simulation/devel/./cmake.lock
+/workspaces/airship_simulation/devel/.private/rqt_rotors/bin/hil_plugin /workspaces/airship_simulation/devel/bin/hil_plugin
+/workspaces/airship_simulation/devel/.private/rqt_rotors/bin/cmake.lock /workspaces/airship_simulation/devel/bin/cmake.lock
+/workspaces/airship_simulation/devel/.private/rqt_rotors/lib/pkgconfig/rqt_rotors.pc /workspaces/airship_simulation/devel/lib/pkgconfig/rqt_rotors.pc
+/workspaces/airship_simulation/devel/.private/rqt_rotors/lib/python3/dist-packages/rqt_rotors/__init__.py /workspaces/airship_simulation/devel/lib/python3/dist-packages/rqt_rotors/__init__.py
+/workspaces/airship_simulation/devel/.private/rqt_rotors/share/rqt_rotors/cmake/rqt_rotorsConfig.cmake /workspaces/airship_simulation/devel/share/rqt_rotors/cmake/rqt_rotorsConfig.cmake
+/workspaces/airship_simulation/devel/.private/rqt_rotors/share/rqt_rotors/cmake/rqt_rotorsConfig-version.cmake /workspaces/airship_simulation/devel/share/rqt_rotors/cmake/rqt_rotorsConfig-version.cmake

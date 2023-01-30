@@ -1,0 +1,29 @@
+FROM ros:noetic-ros-base-focal
+
+WORKDIR /home
+
+SHELL ["/bin/bash", "-c"]
+
+RUN apt-get update
+ENV DEBIAN_FRONTEND=noninteractive
+
+# install basic dependencies
+RUN apt-get install -y curl git cmake tmux build-essential curl
+RUN cd /usr/bin && ln -fs python3 python
+
+# install ros packages TODO 'ros-noetic-desktop-full' may be excessive
+RUN apt install -y ros-noetic-desktop-full \
+                ros-noetic-joy ros-noetic-octomap-ros \
+                ros-noetic-mavlink
+
+RUN apt install -y python3-wstool python3-catkin-tools \
+                protobuf-compiler libgoogle-glog-dev \
+                ros-noetic-control-toolbox
+
+libqt5svg5* libopenscenegraph-dev qt5-default qtcreator qtscript5-dev 
+libqt5serialport5-dev qtmultimedia5-dev
+
+ADD src /home/src
+ADD script /home/script
+RUN source /opt/ros/noetic/setup.bash && rosdep update && catkin build
+

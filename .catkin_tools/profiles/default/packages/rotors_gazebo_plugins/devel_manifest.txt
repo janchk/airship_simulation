@@ -1,0 +1,22 @@
+rotors_simulator/rotors_gazebo_plugins
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/cmake.lock /workspaces/airship_simulation/devel/./cmake.lock
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/libLiftDragPlugin.so /workspaces/airship_simulation/devel/lib/libLiftDragPlugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_magnetometer_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_magnetometer_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_imu_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_imu_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_mavlink_interface.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_mavlink_interface.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_ros_interface_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_ros_interface_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_lidar_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_lidar_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_controller_interface.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_controller_interface.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_motor_model.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_motor_model.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_wind_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_wind_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_odometry_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_odometry_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_fw_dynamics_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_fw_dynamics_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_gps_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_gps_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/libgazebo_geotagged_images_plugin.so /workspaces/airship_simulation/devel/lib/libgazebo_geotagged_images_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_noisydepth_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_noisydepth_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_multirotor_base_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_multirotor_base_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_bag_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_bag_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/librotors_gazebo_pressure_plugin.so /workspaces/airship_simulation/devel/lib/librotors_gazebo_pressure_plugin.so
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/lib/pkgconfig/rotors_gazebo_plugins.pc /workspaces/airship_simulation/devel/lib/pkgconfig/rotors_gazebo_plugins.pc
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/share/rotors_gazebo_plugins/cmake/rotors_gazebo_pluginsConfig.cmake /workspaces/airship_simulation/devel/share/rotors_gazebo_plugins/cmake/rotors_gazebo_pluginsConfig.cmake
+/workspaces/airship_simulation/devel/.private/rotors_gazebo_plugins/share/rotors_gazebo_plugins/cmake/rotors_gazebo_pluginsConfig-version.cmake /workspaces/airship_simulation/devel/share/rotors_gazebo_plugins/cmake/rotors_gazebo_pluginsConfig-version.cmake
