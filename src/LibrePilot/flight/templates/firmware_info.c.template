@@ -41,15 +41,16 @@
  *  20 bytes: free for now.
  *
  */
-
+// I'm not proud of this change
+// the original values was ${HASH8} and ${UNIXTIME}
 #if (defined(__MACH__) && defined(__APPLE__))
 const struct fw_version_info fw_version_blob __attribute__((used)) __attribute__((__section__("__TEXT,.fw_version_blob"))) = {
 #else
 const struct fw_version_info fw_version_blob __attribute__((used)) __attribute__((__section__(".fw_version_blob"))) = {
 #endif
     .magic              = { 'O','p','F','w' },
-    .commit_hash_prefix = 0x${HASH8},
-    .timestamp          = ${UNIXTIME},
+    .commit_hash_prefix = 0x0,
+    .timestamp          = 0000,
     .board_type         = ${BOARD_TYPE},
     .board_revision     = ${BOARD_REVISION},
     .commit_tag_name    = "${FWTAG}",

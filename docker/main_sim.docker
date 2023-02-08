@@ -4,11 +4,10 @@ WORKDIR /home
 
 SHELL ["/bin/bash", "-c"]
 
-RUN apt-get update
 ENV DEBIAN_FRONTEND=noninteractive
 
 # install basic dependencies
-RUN apt-get install -y curl git cmake tmux build-essential curl
+RUN apt update && apt-get install -y curl git cmake tmux build-essential curl
 RUN cd /usr/bin && ln -fs python3 python
 
 # install ros packages TODO 'ros-noetic-desktop-full' may be excessive
@@ -20,10 +19,24 @@ RUN apt install -y python3-wstool python3-catkin-tools \
                 protobuf-compiler libgoogle-glog-dev \
                 ros-noetic-control-toolbox
 
-libqt5svg5* libopenscenegraph-dev qt5-default qtcreator qtscript5-dev 
-libqt5serialport5-dev qtmultimedia5-dev
-
 ADD src /home/src
 ADD script /home/script
 RUN source /opt/ros/noetic/setup.bash && rosdep update && catkin build
 
+WORKDIR src/LibrePilot
+RUN apt install -y libqt5serialport5-dev qtmultimedia5-dev \
+            libqt5svg5* libopenscenegraph-dev qt5-default \
+            qtcreator qtscript5-dev
+
+RUN apt install -y libusb-dev libsdl-dev libudev-dev \
+                libosgearth-dev libopenscenegraph-dev \
+                gcc-7 g++-7 python2
+
+RUN make arm_sdk_install
+RUN make uncrustify_install
+RUN echo  $(realpath $(dir $(lastword $(MAKEFILE_LIST))))
+RUN GCS_QMAKE_OPTS="QMAKE_CXX=g++-7 QMAKE_CC=gcc-7" make -j$(nproc) gcs
+RUN GCS_QMAKE_OPTS="QMAKE_CXX=g++-7 QMAKE_CC=gcc-7" make -j$(nproc) fw_simposix
+RUN GCS_QMAKE_OPTS="QMAKE_CXX=g++-7 QMAKE_CC=gcc-7" make -j$(nproc) fw_revolution
+
+WORKDIR /home
