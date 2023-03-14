@@ -1,7 +1,10 @@
-[submodule "rotors_simulator"]
-	path = rotors_simulator
-	url = https://github.com/aamirahmad/rotors_simulator.git
-[submodule "LibrePilot"]
-	path = LibrePilot
-	url = https://github.com/robot-perception-group/LibrePilot.git
+[submodule "src/modules/LibrePilot"]
+	path = src/modules/LibrePilot
+	url = https://github.com/Ootang2019/LibrePilot
 	branch = airship_control
+[submodule "src/modules/rotors_simulator"]
+	path = src/modules/rotors_simulator
+	url = https://github.com/Ootang2019/rotors_simulator
+[submodule "src/modules/mav_comm"]
+	path = src/modules/mav_comm
+	url = https://github.com/ethz-asl/mav_comm

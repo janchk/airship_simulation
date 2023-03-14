@@ -1,0 +1,23 @@
+version: "3.4"
+services:
+  simulator:
+    network_mode: "host"
+    image: janchk/airship:latest
+    build:
+      context: ..
+      dockerfile: docker/main_sim.docker
+    container_name: airship_sim
+    runtime: nvidia
+    environment:
+      # - "ROS_MASTER_URI=http://ros-master:11311"
+      - "NO_AT_BRIDGE=1"
+      - "QT_X11_NO_MITSHM=1" #fix some QT bugs
+      - "NVIDIA_VISIBLE_DEVICES=all"
+      - "NVIDIA_DRIVER_CAPABILITIES=all"
+      - "XAUTHORITYS"
+      - "DISPLAY"
+    user: 0:0 #adapt as needed!
+    volumes: 
+      # share your x11 socket and permissions to the container
+      - /tmp/.X11-unix:/tmp/.X11-unix:rw
+    entrypoint: terminator -e "bash /home/script/sim_sitl.bash"

@@ -26,28 +26,40 @@ Link or copy the packaged into the *src* folder of your catkin workspace.
 
 Build packages with **catkin_make**
 
+# Requirements*
+* [Docker-compose] (https://docs.docker.com/compose/)
+* [nvidia-docker] (https://github.com/NVIDIA/nvidia-docker)
+
+*'*' *Hey there, janchk is here. This fork differs from the original repo. The main difference is that I've managed to pack whole compiling and installation process into one container. It's much easier to run and reproduce the results on the other machine! The main disadvantage that you need to use nvidia GPU to display GUI. But that's for now. [Rocker](https://github.com/osrf/rocker) support will be added in the future.*
+
+## Run Instructions
+1. Just run `start.sh` script and everything should be build and run automatically. Assuming that you have cloned this repository with 
+`git clone --recurse-submodules`
+command
+2. If you need more advanced setting, you can use the instruction below.
+
 # Requirements
 * [ROS] (http://wiki.ros.org/melodic) 
 * [mav_msgs] (http://wiki.ros.org/mav_msgs)
 * [Gazebo] (http://gazebosim.org/) -- tested with Gazebo 9.0
 
 
-Installation Instructions - Ubuntu 18.04 with ROS Melodic and Gazebo 9
+Installation Instructions - Ubuntu 20.04 with ROS Noetic and Gazebo 11
 ---------------------------------------------------------------------------
 
-1. Install and initialize ROS Melodic desktop full, additional ROS packages, catkin-tools, and wstool:
+1. Install and initialize ROS Noetic desktop full, additional ROS packages, catkin-tools, and wstool:
 
 ```console
 $ sudo sh -c 'echo "deb http://packages.ros.org/ros/ubuntu $(lsb_release -sc) main" > /etc/apt/sources.list.d/ros-latest.list'
 $ sudo apt-key adv --keyserver 'hkp://keyserver.ubuntu.com:80' --recv-key C1CF6E31E6BADE8868B172B4F42ED6FBAB17C654
 $ sudo apt update
-$ sudo apt install ros-melodic-desktop-full ros-melodic-joy ros-melodic-octomap-ros ros-melodic-mavlink
-$ sudo apt install python-wstool python-catkin-tools protobuf-compiler libgoogle-glog-dev ros-melodic-control-toolbox
+$ sudo apt install ros-noetic-desktop-full ros-noetic-joy ros-noetic-octomap-ros ros-noetic-mavlink
+$ sudo apt install python-wstool python-catkin-tools protobuf-compiler libgoogle-glog-dev ros-noetic-control-toolbox
 $ sudo rosdep init
 $ rosdep update
-$ echo "source /opt/ros/melodic/setup.bash" >> ~/.bashrc
+$ echo "source /opt/ros/noetic/setup.bash" >> ~/.bashrc
 $ source ~/.bashrc
-$ sudo apt install python-rosinstall python-rosinstall-generator build-essential
+$ sudo apt install build-essential
 ```
 2. If you don't have ROS workspace yet you can do so by
 
@@ -55,10 +67,8 @@ $ sudo apt install python-rosinstall python-rosinstall-generator build-essential
 $ mkdir -p ~/catkin_ws/src
 $ cd ~/catkin_ws/src
 $ catkin_init_workspace  # initialize your catkin workspace
-$ git clone --recurse-submodules https://github.com/robot-perception-group/airship_simulation.git
+$ git clone --recurse-submodules https://github.com/Ootang2019/airship_simulation.git -b abcdrl
 ```
-Note: Some sub-submodules inside the rotors_simulator submodule might fail to fetch. This error can be ignored, they are not needed.
-
 
 3. Build your workspace with `python_catkin_tools` 
 
@@ -81,15 +91,19 @@ $ source ~/.bashrc
 ```console
 $ cd src/airship_simulation/LibrePilot
 $ # install qt sdk for building of GCS
+
+$ apt install qt5-default qtcreator 
+
 $ make qt_sdk_install
 $ # install arm sdk for building of flightcontroller firmware
 $ make arm_sdk_install
 $ # install uncrustify
 $ make uncrustify_install
 $ # install build dependencies
-$ sudo apt install libusb-dev libsdl-dev libudev-dev libosgearth-dev libopenscenegraph-3.4-dev
-$ # build gcs
-$ make -j 10 gcs
+$ sudo apt install libusb-dev libsdl-dev libudev-dev libosgearth-dev libopenscenegraph-3.4-dev gcc-7 g++-7
+$ # IMPORTANT # Ubuntu20 uses gcc-9 by default, but gcs does not compile with gcc9 due to some new warnings treated as errors
+$ # build gcs - ENFORCE gcc-7
+$ GCS_QMAKE_OPTS="QMAKE_CXX=g++-7 QMAKE_CC=gcc-7" make -j 10 gcs
 $ # if this fails, check error message for possible additional dependencies
 $ # build SITL flightcontroller executable
 $ make -j 10 fw_simposix
