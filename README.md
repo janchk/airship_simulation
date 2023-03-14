@@ -26,6 +26,18 @@ Link or copy the packaged into the *src* folder of your catkin workspace.
 
 Build packages with **catkin_make**
 
+# Requirements*
+* [Docker-compose] (https://docs.docker.com/compose/)
+* [nvidia-docker] (https://github.com/NVIDIA/nvidia-docker)
+
+*'*' *Hey there, janchk is here. This fork differs from the original repo. The main difference is that I've managed to pack whole compiling and installation process into one container. It's much easier to run and reproduce the results on the other machine! The main disadvantage that you need to use nvidia GPU to display GUI. But that's for now. [Rocker](https://github.com/osrf/rocker) support will be added in the future.*
+
+## Run Instructions
+1. Just run `start.sh` script and everything should be build and run automatically. Assuming that you have cloned this repository with 
+`git clone --recurse-submodules`
+command
+2. If you need more advanced setting, you can use the instruction below.
+
 # Requirements
 * [ROS] (http://wiki.ros.org/melodic) 
 * [mav_msgs] (http://wiki.ros.org/mav_msgs)

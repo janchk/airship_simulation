@@ -1,4 +1,5 @@
 .vscode
+.catkin_tools
 /LibrePilot/.vscode
 
 /blimp_description/launch/blimp_without_env.launch

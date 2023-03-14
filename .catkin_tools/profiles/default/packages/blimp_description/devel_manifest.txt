@@ -1,5 +1,0 @@
-blimp_description
-/workspaces/airship_simulation/devel/.private/blimp_description/cmake.lock /workspaces/airship_simulation/devel/./cmake.lock
-/workspaces/airship_simulation/devel/.private/blimp_description/lib/pkgconfig/blimp_description.pc /workspaces/airship_simulation/devel/lib/pkgconfig/blimp_description.pc
-/workspaces/airship_simulation/devel/.private/blimp_description/share/blimp_description/cmake/blimp_descriptionConfig.cmake /workspaces/airship_simulation/devel/share/blimp_description/cmake/blimp_descriptionConfig.cmake
-/workspaces/airship_simulation/devel/.private/blimp_description/share/blimp_description/cmake/blimp_descriptionConfig-version.cmake /workspaces/airship_simulation/devel/share/blimp_description/cmake/blimp_descriptionConfig-version.cmake

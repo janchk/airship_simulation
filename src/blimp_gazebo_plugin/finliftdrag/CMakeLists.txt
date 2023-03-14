@@ -46,6 +46,8 @@ if(NOT DEFINED NO_ROS)
   set(NO_ROS FALSE)
 endif()
 
+set(NO_ROS FALSE)
+
 # Add any additional include directories as specified by the calling process (either user or another CMake file).
 # ASL: Doesn't use this, catkin manages the mav_comm dependency
 # PX4: Provides include directory for mav_msgs, so that "mav_msgs/default_topics.h" can be found and used.
@@ -155,6 +157,13 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${rotors_gazebo_plugins_INCLUDE_DIRS})
 
+# ============================================== #
+# ==================== CATKIN ================== #
+# ============================================== #
+
+if (NOT NO_ROS)
+  catkin_package()
+endif()
 
 if (BUILD_MAVLINK_INTERFACE_PLUGIN)
   include_directories(${mavros_msgs_INCLUDE_DIRS})
@@ -223,6 +232,9 @@ include_directories(${Eigen_INCLUDE_DIRS})
 #========================================= finliftdrag PLUGIN ==========================================//
 add_library(${PROJECT_NAME} SHARED src/finliftdrag_plugin.cpp ${PROTO_SRCS} ${PROTO_HDRS})
 target_link_libraries(${PROJECT_NAME} ${catkin_LIBRARIES} ${GAZEBO_LIBRARIES})
+add_dependencies(${PROJECT_NAME} ${catkin_EXPORTED_TARGETS})
+
+list(APPEND targets_to_install ${PROJECT_NAME})
 
 # =============================================================================================== #
 # ======================================= EXTERNAL LIBRARIES ==================================== #
@@ -237,8 +249,11 @@ else()
   set(LIB_DESTINATION ${CMAKE_BINARY_DIR})
 endif()
 
+
 # Install all targets that were defined above (some conditionally) and added to the
 # variable targets_to_install
+
+# message (FATAL_ERROR "${CATKIN_PACKAGE_LIB_DESTINATION}" )
 install(
   TARGETS
     ${targets_to_install}
@@ -247,4 +262,4 @@ install(
 )
 
 
-#message(FATAL_ERROR "Reached EOF.")
+# message(FATAL_ERROR "Reached EOF.")

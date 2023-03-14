@@ -20,4 +20,4 @@ services:
     volumes: 
       # share your x11 socket and permissions to the container
       - /tmp/.X11-unix:/tmp/.X11-unix:rw
-    entrypoint: bash -c "source devel/setup.bash && roslaunch blimp_description blimp_gcs.launch"
+    entrypoint: terminator -e "bash /home/script/sim_sitl.bash"

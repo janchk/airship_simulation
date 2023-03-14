@@ -155,6 +155,18 @@ include_directories(${OpenCV_INCLUDE_DIRS})
 include_directories(${CMAKE_CURRENT_BINARY_DIR})
 include_directories(${rotors_gazebo_plugins_INCLUDE_DIRS})
 
+# ============================================== #
+# ==================== CATKIN ================== #
+# ============================================== #
+
+if (NOT NO_ROS)
+  catkin_package()
+endif()
+
+
+# ============================================== #
+# ==================== Mavlink ================= #
+# ============================================== #
 
 if (BUILD_MAVLINK_INTERFACE_PLUGIN)
   include_directories(${mavros_msgs_INCLUDE_DIRS})

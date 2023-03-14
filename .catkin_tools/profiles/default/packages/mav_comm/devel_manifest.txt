@@ -1,2 +1,0 @@
-mav_comm/mav_comm
-/workspaces/airship_simulation/devel/.private/mav_comm/cmake.lock /workspaces/airship_simulation/devel/./cmake.lock
